@@ -1,1 +1,49 @@
 
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+public class Solution {
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        //  方法1：双指针法：同时遍历链表（时间复杂度O（N），空间复杂度为O（1））
+        // 1.p1指向headA， p2指向headB。
+        // 2.分别遍历链表，p1遍历完后指向headB重新遍历一遍，p2遍历完后指向headA重新遍历一遍
+        // 3.相遇时，所指向的节点就是第一个公共节点
+        ListNode p1 = headA, p2 = headB;
+        
+        while(p1 != p2){
+           // pA = pA == null ? headB : pA.next;
+            //pB = pB == null ? headA : pB.next;
+            if(p1==null) p1 = headB;
+            else p1 = p1.next;
+
+            if(p2==null) p2 = headA;
+            else p2 = p2.next;
+        }        
+       return p1;
+
+    //方法2：利用哈希表 （时间复杂度和空间复杂度都为O（N））
+    // Set<ListNode> set = new HashSet<>();
+    // ListNode node = headA;
+    // while(node!=null){
+    //    set.add(node);
+    //     node = node.next;
+    // }
+    // node = headB;
+    // while(node!=null){
+    //     if(set.contains(node)) return node;
+    //     node = node.next;
+    // }
+    // return null;
+
+   
+
+    }
+}
